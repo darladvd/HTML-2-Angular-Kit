@@ -1,0 +1,48 @@
+<form [formGroup]="form">
+    <div class="mb-3">
+        <label for="title">Title</label>
+        <input formControlName="title" name="title" id="title" class="form-control" placeholder="Amazing Blog"/>
+    </div>
+    
+    <div class="mb-3">
+        <label for="description">Description</label>
+        <input formControlName="description" name="description" id="description" class="form-control" placeholder="Describe your blog here"/>
+    </div>
+
+    <div class="mb-3">
+        <label for="image">Image Link</label>
+        <input formControlName="image" name="image" id="image" class="form-control" placeholder="ex: https://image.com"/>
+    </div>
+
+    <div class="mb-3">
+        <label for="date">Modified Date</label>
+        <input
+        id="data"
+        class="form-control"
+        #datepickerYMD="bsDatepicker"
+        formControlName="modified"
+        bsDatepicker
+        [bsConfig]="{ dateInputFormat: 'MM/DD/YYYY' }">
+    </div>
+
+    <div class="form-check form-switch">
+        <input formControlName="published" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Published?</label>
+    </div>
+    <div>
+        <ng-container formArrayName="tags">
+            <label for="tags">Tags</label>
+            <div class="input-group mb-3" *ngFor="let _ of tagsFormArray.controls; index as i">
+                <input type="text" class="form-control" [formControlName]="i" placeholder="Tag Name">
+                <button (click)="deleteTag(i)" class="btn btn-danger" type="button">Delete</button>
+            </div>
+            <button class="btn btn-info me-md-2" type="button" (click)="addTag()">
+                 Add</button>
+        </ng-container>
+    </div>
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-success" (click)="doAction()">{{buttonLabel}}</button>
+        <button type="button" class="btn btn-info">Clear</button>
+    </div>
+</form>

@@ -1,0 +1,29 @@
+<div class="card mb-3">
+    <div class="row">
+      <div class="col-md-4">
+        <img [src]="blog?.image" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{blog?.title}}</h5>
+          <p class="card-text">
+              {{blog?.description}}
+          </p>
+          <p class="card-text"><small>Published by: {{blog?.user?.name}}</small></p>
+          <p class="card-text">
+              <small class="text-muted">Modified: {{blog?.modified}}</small>
+              <br>
+              <span *ngFor="let tag of blog?.tags" class="badge bg-primary">{{tag}}</span>
+          </p>
+
+          <p class="card-text">
+            <button class="btn btn-info me-md-2" type="button" (click)="doAction(blogActionEdit)">
+              <i-bs name="pen-fill"></i-bs> Edit</button>
+            <button class="btn btn-danger"(click)="doAction(blogActionDelete)" type="button">
+              <i-bs name="x-circle"></i-bs> Delete</button>
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </div>

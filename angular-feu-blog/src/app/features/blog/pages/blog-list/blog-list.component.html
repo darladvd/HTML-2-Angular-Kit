@@ -1,0 +1,8 @@
+<div class="row">
+    <app-blog-commandbar (action)="doAction($event)"></app-blog-commandbar>
+</div>
+<div class="row">
+    <div *ngFor="let data of blogs " class="col-12">
+        <app-blog-item [blog]="data" (action)="doAction($event)"></app-blog-item>
+    </div>
+</div>
